@@ -1,0 +1,40 @@
+##En AWS Academy
+Tipo: Personalizado TCP
+Protocolo: TCP
+Puerto: 8050
+Versión: IPv4
+Origen: Selecciona 0.0.0.0/0
+Link: http://52.201.214.141:8050
+
+###En una nueva terminal local
+cd "C:/Users/Angie Gonzalez/Documentos/Maestria/Semestre 3 - Periodo 2/Despliegue de soluciones analíticas\Proyecto\Repositorio GitHub\Proyecto-DSA-G10\Script Python"
+
+scp -i "Llave Contaminacion Atmosferica.pem" "MLflow Contaminacion Atmosferica (Arbol Regresor).py" ubuntu@52.201.214.141:/home/ubuntu
+scp -i "Llave Contaminacion Atmosferica.pem" "MLflow Contaminacion Atmosferica (Regresion Lineal Multiple).py" ubuntu@52.201.214.141:/home/ubuntu
+
+
+##En una nueva terminal local conectada a la maquina virtual
+ssh -i "C:/Users/Angie Gonzalez/Documentos/Maestria/Semestre 3 - Periodo 2/Despliegue de soluciones analíticas\Proyecto\Repositorio GitHub\Proyecto-DSA-G10\Script Python\Llave Contaminacion Atmosferica.pem" ubuntu@52.201.214.141
+
+sudo apt update
+sudo apt install python3-pip
+pip --version
+sudo apt install python3.12-venv
+python3 -m venv /home/ubuntu/env-mlflow
+source /home/ubuntu/env-mlflow/bin/activate
+pip install scikit-learn
+pip install mlflow
+pip install ucimlrepo
+pip install statsmodels
+mlflow --version
+
+tmux new -s mlflow_session
+sudo lsof -i :8050
+mlflow server -h 0.0.0.0 -p 8050
+
+##En una nueva terminal local conectada a la maquina virtual
+ssh -i "C:/Users/Angie Gonzalez/Documentos/Maestria/Semestre 3 - Periodo 2/Despliegue de soluciones analíticas\Proyecto\Repositorio GitHub\Proyecto-DSA-G10\Script Python\Llave Contaminacion Atmosferica.pem" ubuntu@52.201.214.141
+
+tmux new -s modelos
+python3 "MLflow Contaminacion Atmosferica (Arbol Regresor).py"
+python3 "MLflow Contaminacion Atmosferica (Regresion Lineal Multiple).py"
