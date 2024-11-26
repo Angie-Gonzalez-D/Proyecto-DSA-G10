@@ -78,6 +78,7 @@ results = model.fit()
 # Crear la aplicación de Dash
 app = dash.Dash(__name__)
 app.title = "Dashboard de Calidad del Aire"
+server = app.server
 
 # Layout del dashboard
 app.layout = html.Div([
