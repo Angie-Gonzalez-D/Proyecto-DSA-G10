@@ -195,9 +195,9 @@ def predict(n_clicks, PT08_S1_CO, PT08_S2_NMHC, PT08_S3_NOx, PT08_S4_NO2, PT08_S
                 'axis': {'range': [0, 5]},
                 'steps': [
                     {'range': [0, 1], 'color': "green"},
-                    {'range': [1, 2.5], 'color': "yellow"},
-                    {'range': [2.5, 4], 'color': "orange"},
-                    {'range': [4, 5], 'color': "red"}
+                    {'range': [1, 1.5], 'color': "yellow"},
+                    {'range': [1.5, 2.5], 'color': "orange"},
+                    {'range': [2.5, 5], 'color': "red"}
                 ],
 	    'bar': {'color':"black", 'thickness':0.2}
 
